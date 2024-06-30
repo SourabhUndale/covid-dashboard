@@ -1,23 +1,25 @@
-// PieChart.js
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
+import { Chart as Chartjs } from 'chart.js/auto';
 
 const Piechart = ({ data }) => {
-  const pieData = {
-    labels: ['Total Cases', 'Recoveries', 'Deaths'],
-    datasets: [
-      {
-        data: [data.totalCases, data.totalRecoveries, data.totalDeaths],
-        backgroundColor: ['#4f46e5', 'green', 'red'],
-      },
-    ],
-  };
+    const { totalCases, totalRecoveries, totalDeaths, population } = data;
 
-  return (
-    <div>
-      <Pie height={900} width={900} data={pieData} />
-    </div>
-  );
+    const pieData = {
+        labels: ['Total Cases', 'Recoveries', 'Deaths', 'Population'],
+        datasets: [
+            {
+                data: [totalCases, totalRecoveries, totalDeaths, population],
+                backgroundColor: ['#4f46e5', 'green', 'red', 'orange'], 
+            },
+        ],
+    };
+
+    return (
+        <div style={{ height: '350px', marginLeft: '100px' }}>
+            <Pie data={pieData} />
+        </div>
+    );
 };
 
 export default Piechart;

@@ -1,18 +1,86 @@
-// LineChart.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import { Chart as Chartjs } from 'chart.js/auto';
+import { Chart as ChartJS, LineElement, PointElement, LinearScale, Title, Legend } from 'chart.js';
 
-const Linechart = ({ data }) => {
-  return (
-    <div>
-      {data !== null ? (
-        <Line  data={data} />
-      ) : (
-        <div>Data Not Found</div>
-      )}
-    </div>
-  );
+ChartJS.register(LineElement, PointElement, LinearScale, Title, Legend);
+
+const Linechart = ({ timeline }) => {
+    const [covidData, setCovidData] = useState(null);
+
+    useEffect(() => {
+        if (timeline) {
+            const labels = Object.keys(timeline.cases);
+
+            setCovidData({
+                labels,
+                  datasets: [
+                    {
+                        label: 'Total Cases',
+                        data: Object.values(timeline.cases),
+                        borderColor: '#4f46e5',
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Recoveries',
+                        data: Object.values(timeline.recovered),
+                        borderColor: 'green',
+                        fill: false,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Deaths',
+                        data: Object.values(timeline.deaths),
+                        borderColor: 'red',
+                        fill: false,
+                        tension: 0.1
+                    },
+                ],
+            });
+        }
+    }, [timeline]);
+
+    const options = {
+         responsive: true,
+        scales: {
+            x: {
+                grid: {
+                    display: true,
+                    color: '#e0e0e0'
+                },
+                
+
+            },
+            y: {
+                grid: {
+                    display: true,
+                    color: '#e0e0e0'
+                }
+            }
+        },
+        
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top'
+            },
+                title: {
+                    display: true,
+                    text: 'Date'
+                }
+            
+        }
+    };
+
+    return (
+        <div>
+            {covidData ? (
+                <Line  data={covidData} options={options} />
+            ) : (
+                <div>Data Not Found</div>
+            )}
+        </div>
+    );
 };
 
 export default Linechart;

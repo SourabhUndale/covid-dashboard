@@ -1,4 +1,5 @@
-**COVID-19 and Population Dashboard**
+# COVID-19 and Population Dashboard
+
 This project is a web application dashboard that displays COVID-19 data for different countries. Users can select a country, choose a date range, and view the total cases, recoveries, and deaths in the selected date range. The data is visualized using line and pie charts.
 
 Features

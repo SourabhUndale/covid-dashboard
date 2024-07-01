@@ -19,21 +19,41 @@ const Linechart = ({ timeline }) => {
                         data: Object.values(timeline.cases),
                         borderColor: '#4f46e5',
                         fill: false,
-                        tension: 0.1
+                        tension: 0.1,
+                        pointBorderWidth: 0,
+                        pointHoverRadius: 0,
+                        pointHoverBorderWidth: 0,
+                        lineWidth: 100,
+                        pointRadius: 0,
+                        pointHitRadius: 0,
+
                     },
                     {
                         label: 'Recoveries',
                         data: Object.values(timeline.recovered),
                         borderColor: 'green',
                         fill: false,
-                        tension: 0.1
+                        tension: 0.1,
+                        pointBorderWidth: 0,
+                        pointHoverRadius: 0,
+                        pointHoverBorderWidth: 0,
+                        lineWidth: 100,
+                        pointRadius: 0,
+                        pointHitRadius: 0,
+
                     },
                     {
                         label: 'Deaths',
                         data: Object.values(timeline.deaths),
                         borderColor: 'red',
                         fill: false,
-                        tension: 0.1
+                        tension: 0.1,
+                        pointBorderWidth: 0,
+                        pointHoverRadius: 0,
+                        pointHoverBorderWidth: 0,
+                        lineWidth: 100,
+                        pointRadius: 0,
+                        pointHitRadius: 0,
                     },
                 ],
             });

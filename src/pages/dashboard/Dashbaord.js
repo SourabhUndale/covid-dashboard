@@ -15,7 +15,7 @@ const Dashbaord = () => {
     const [filteredData, setFilteredData] = useState({ cases: {}, deaths: {}, recovered: {} });
     const [countries, setCountries] = useState([]);
     const [showDropdown, setShowDropdown] = useState(false);
-    
+
 
     useEffect(() => {
         const fetchCountries = async () => {
@@ -27,7 +27,7 @@ const Dashbaord = () => {
                         code: country.cca2.toLowerCase(),
                     }))
                 );
-                
+
             } catch (error) {
                 console.error('Error fetching countries:', error);
             }
@@ -47,10 +47,10 @@ const Dashbaord = () => {
                 `https://disease.sh/v3/covid-19/historical/${country}?lastdays=1500`
             );
             setCountryData(response.data.timeline);
-            setFilteredData(response.data.timeline); // Initially set filtered data to full data
+            setFilteredData(response.data.timeline);
             console.log('Selected Country Data:', response.data);
-            
-            
+
+
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -58,7 +58,7 @@ const Dashbaord = () => {
 
     const filterDataByDateRange = () => {
         if (!startDate || !endDate || !countryData) return;
-        
+
 
         const filteredCases = Object.keys(countryData.cases)
             .filter(date => new Date(date) >= startDate && new Date(date) <= endDate)
@@ -74,7 +74,7 @@ const Dashbaord = () => {
                 return obj;
             }, {});
 
-            
+
         const filteredRecoveries = Object.keys(countryData.recovered)
             .filter(date => new Date(date) >= startDate && new Date(date) <= endDate)
             .reduce((obj, date) => {
@@ -89,14 +89,19 @@ const Dashbaord = () => {
         });
     };
 
+
+
     useEffect(() => {
         filterDataByDateRange();
     }, [startDate, endDate, countryData]);
+
 
     const handleChange = (value) => {
         setInput(value);
         setShowDropdown(true);
     };
+
+
 
     const handleDropdownClick = (country) => {
         setInput(country.name);
@@ -109,7 +114,7 @@ const Dashbaord = () => {
     const totalRecoveries = Object.values(filteredData.recovered || {}).reduce((total, value) => total + value, 0);
 
     return (
-    <>
+        <>
             <div className="container mt-5">
                 <h2 className="text-center">COVID-19 and Population Dashboard</h2>
 
@@ -159,7 +164,7 @@ const Dashbaord = () => {
                     </div>
                 </div>
 
-                <div className="row text-center mt-4">
+                <div className="row text-center mt-4" id='counts'>
                     <div className="col-md-4">
                         <div className="info-card d-flex align-items-center">
                             <div className="info-title flex-grow-1">
@@ -196,11 +201,11 @@ const Dashbaord = () => {
                 </div>
 
                 <div className='row mt-4' id='chart'>
-                <div className="col-md-6">
-                    <div className="" >
-                        <Linechart timeline={filteredData} height={800} />
+                    <div className="col-md-6">
+                        <div className="" >
+                            <Linechart timeline={filteredData} height={800} />
+                        </div>
                     </div>
-                </div>
 
                     <div className="col-md-6">
                         <div className="">
@@ -208,9 +213,9 @@ const Dashbaord = () => {
                         </div>
                     </div>
                 </div>
-                </div>
-            </>
-            );
+            </div>
+        </>
+    );
 };
 
-            export default Dashbaord;
+export default Dashbaord;

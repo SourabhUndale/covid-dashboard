@@ -37,7 +37,6 @@
     margin: 0;
 }
 
-/* 
-#chart{
-    height: 100vh;
-} */
+#counts{
+    margin-bottom: 100px;
+}

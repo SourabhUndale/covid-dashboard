@@ -2,7 +2,7 @@
 
 This project is a web application dashboard that displays COVID-19 data for different countries. Users can select a country, choose a date range, and view the total cases, recoveries, and deaths in the selected date range. The data is visualized using line and pie charts.
 
-## Features
+### Features
 
 * Search for a country to view its COVID-19 data
 * Select a date range to filter the data
@@ -19,12 +19,12 @@ This project is a web application dashboard that displays COVID-19 data for diff
 * react-chartjs-2
 * Bootstrap (for styling)
 
-Getting Started
+### Getting Started
 
 Prerequisites
 * Node.js and npm installed on your machine
   
-Installation
+### Installation
 1. Clone the repository:
     git clone https://github.com/your-username/covid-dashboard.git
    
@@ -34,7 +34,7 @@ Installation
 3.Install the dependencies:
   npm install
 
-Running the Application
+### Running the Application
 To run the application locally:
 
 bash or powershell
@@ -43,7 +43,7 @@ Copy code
 The application will start on http://localhost:3000.
 
 
-Project Structure
+### Project Structure
 * src/
   * components/
        * Dashboard.js: Main component that contains the dashboard logic and layout
@@ -52,7 +52,7 @@ Project Structure
   * App.js: Root component that renders the Dashboard
   * index.css:
 
-Code Overview
+### Code Overview
 
 Dashboard.js
   * Handles fetching country data, filtering data by date range, and rendering the main dashboard UI.
@@ -63,7 +63,7 @@ Linechart.js
 Piechart.js
   * A component that takes data (total cases, recoveries, deaths) as a prop and renders a pie chart using react-chartjs-2.
 
-API Usage
+### API Usage
 The application uses two APIs:
 
 REST Countries API

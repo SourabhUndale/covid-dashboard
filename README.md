@@ -10,7 +10,7 @@ This project is a web application dashboard that displays COVID-19 data for diff
 * Visualize data using line and pie charts
 
   
-Tech Stack
+### Tech Stack
 
 * React
 * Axios
